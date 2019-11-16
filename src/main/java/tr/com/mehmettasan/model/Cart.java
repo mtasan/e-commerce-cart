@@ -9,7 +9,7 @@ import java.util.Collections;
 import java.util.HashMap;
 
 public class Cart {
-
+ 
 	HashMap<Product, Integer> cartList = new HashMap<Product, Integer>();
 	BigDecimal totalCost = new BigDecimal(BigInteger.ZERO, 2);
 

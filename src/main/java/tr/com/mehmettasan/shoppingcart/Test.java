@@ -13,7 +13,7 @@ import tr.com.mehmettasan.model.Coupon;
 import tr.com.mehmettasan.model.DiscountType;
 import tr.com.mehmettasan.model.Product;
 
-public class Test {
+public class Test {  
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

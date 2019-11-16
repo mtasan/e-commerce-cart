@@ -9,7 +9,7 @@ public class Category {
 	public Category(String title) {
 		this.title = title;
 	}
-
+ 
 	SortedSet<LinkedList<Set<Product>>> categoryTree = new TreeSet<LinkedList<Set<Product>>>();
 	
 	public String title;

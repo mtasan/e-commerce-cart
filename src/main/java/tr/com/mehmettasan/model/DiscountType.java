@@ -4,3 +4,4 @@ public enum DiscountType {
 	  RATE,
 	  AMOUNT
 }
+ 

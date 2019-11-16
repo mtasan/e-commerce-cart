@@ -3,8 +3,8 @@ package tr.com.mehmettasan.model;
 import java.math.BigDecimal;
 
 public class Campaign {
-	String campaignName;
-	Category category;
+	String campaignName; 
+	Category category; 
 	BigDecimal discount;
 	int itemCount;
 	DiscountType discountType;

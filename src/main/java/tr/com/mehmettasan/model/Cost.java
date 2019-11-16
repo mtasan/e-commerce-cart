@@ -5,6 +5,6 @@ import java.math.BigDecimal;
 public abstract class Cost {
  BigDecimal cost;
  
- public BigDecimal calculateTotalCost;
+ public BigDecimal calculateTotalCost; 
  
 }
