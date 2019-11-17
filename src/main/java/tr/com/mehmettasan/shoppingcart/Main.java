@@ -44,10 +44,12 @@ public class Main {
 		campaignList.add(campaign1);
 		campaignList.add(campaign2);
 		cart.applyDiscounts(campaignList);
+
+		
 		
 		
 		Coupon coupon = new Coupon("Yüzde 10 indirim",new BigDecimal(100),new BigDecimal(10),discountType.RATE);
-		cart.applyCoupon(coupon);
+		cart.applyDiscount(coupon);
 		
 		
 		DeliveryCostCalculator deliveryCC = new DeliveryCostCalculator(new BigDecimal(13),new BigDecimal(3),new BigDecimal("2.99"));

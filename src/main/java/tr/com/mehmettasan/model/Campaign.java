@@ -2,7 +2,7 @@ package tr.com.mehmettasan.model;
 
 import java.math.BigDecimal;
 
-public class Campaign {
+public class Campaign extends Discount{
 	String campaignName; 
 	Category category; 
 	BigDecimal discount;

@@ -100,20 +100,20 @@ public class CartTest {
 	}
 	
 	@Test
-	public void applyCouponRate() {
+	public void applyDiscountRate() {
 		cart.addItem(armut, 3);
 		cart.addItem(mp3, 1);
 		cart.addItem(laptop, 5);
 		cart.addItem(tablet, 2);
 	
 		Coupon coupon = new Coupon("Yüzde 10 indirim",BigDecimal.valueOf(100),BigDecimal.valueOf(10),discountType.RATE);
-		cart.applyCoupon(coupon);
+		cart.applyDiscount(coupon);
 		
 		assertEquals(125,cart.getCouponDiscount().intValue());	
 	}
 	
 	@Test
-	public void applyCouponAmount() {
+	public void applyDiscountAmount() {
 		cart.addItem(armut, 3);
 		cart.addItem(mp3, 1);
 		cart.addItem(laptop, 5);
@@ -121,13 +121,13 @@ public class CartTest {
 
 		
 		Coupon coupon = new Coupon("Yüzde 10 indirim",BigDecimal.valueOf(100),BigDecimal.valueOf(65),discountType.AMOUNT);
-		cart.applyCoupon(coupon);
+		cart.applyDiscount(coupon);
 		
 		assertEquals(65,cart.getCouponDiscount().intValue());	
 	}
 	
 	@Test
-	public void applyCouponRateLessThanMinPurchaseCount() {
+	public void applyDiscountRateLessThanMinPurchaseCount() {
 		cart.addItem(armut, 3);
 		cart.addItem(mp3, 1);
 		cart.addItem(laptop, 5);
@@ -135,13 +135,13 @@ public class CartTest {
 
 		
 		Coupon coupon = new Coupon("Yüzde 10 indirim",BigDecimal.valueOf(2000),BigDecimal.valueOf(10),discountType.RATE);
-		cart.applyCoupon(coupon);
+		cart.applyDiscount(coupon);
 		
 		assertEquals(0,cart.getCouponDiscount().intValue());	
 	}
 	
 	@Test
-	public void applyCouponAmountLessThanMinPurchaseCount() {
+	public void applyDiscountAmountLessThanMinPurchaseCount() {
 		cart.addItem(armut, 3);
 		cart.addItem(mp3, 1);
 		cart.addItem(laptop, 5);
@@ -149,7 +149,7 @@ public class CartTest {
 
 		
 		Coupon coupon = new Coupon("Yüzde 10 indirim",BigDecimal.valueOf(2000),BigDecimal.valueOf(10),discountType.AMOUNT);
-		cart.applyCoupon(coupon);
+		cart.applyDiscount(coupon);
 		
 		assertEquals(0,cart.getCouponDiscount().intValue());	
 	}
@@ -174,7 +174,7 @@ public class CartTest {
 	}
 	
 	@Test
-	public void applyCouponAfterCampaign() {
+	public void applyDiscountAfterCampaign() {
 		cart.addItem(armut, 3);
 		cart.addItem(mp3, 1);
 		cart.addItem(laptop, 5);
@@ -189,7 +189,7 @@ public class CartTest {
 		cart.applyDiscounts(campaignList);
 		
 		Coupon coupon = new Coupon("Yüzde 10 indirim",new BigDecimal(100),new BigDecimal(10),discountType.RATE);
-		cart.applyCoupon(coupon);
+		cart.applyDiscount(coupon);
 		
 		assertEquals(new BigDecimal("96.50"),cart.getCouponDiscount());	
 	}
@@ -210,7 +210,7 @@ public class CartTest {
 		cart.applyDiscounts(campaignList);
 		
 		Coupon coupon = new Coupon("Yüzde 10 indirim",new BigDecimal(100),new BigDecimal(10),discountType.RATE);
-		cart.applyCoupon(coupon);
+		cart.applyDiscount(coupon);
 
 		DeliveryCostCalculator deliveryCC = new DeliveryCostCalculator(new BigDecimal(13),new BigDecimal(3),new BigDecimal("2.99"));
 		
@@ -233,7 +233,7 @@ public class CartTest {
 		cart.applyDiscounts(campaignList);
 		
 		Coupon coupon = new Coupon("Yüzde 10 indirim",new BigDecimal(100),new BigDecimal(10),discountType.RATE);
-		cart.applyCoupon(coupon);
+		cart.applyDiscount(coupon);
 
 		DeliveryCostCalculator deliveryCC = new DeliveryCostCalculator(new BigDecimal(13),new BigDecimal(3),new BigDecimal("2.99"));
 		cart.setDeliveryCost(deliveryCC.calculateCost(cart));

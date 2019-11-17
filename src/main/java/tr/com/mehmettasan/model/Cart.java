@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 
-public class Cart {
+public class Cart implements ICart {
  
 	HashMap<Product, Integer> cartList = new HashMap<Product, Integer>();
 	BigDecimal totalCost = new BigDecimal(BigInteger.ZERO, 2);
@@ -143,20 +143,6 @@ public class Cart {
 
 	}
 
-	public void applyCoupon(Coupon coupon) {
-		BigDecimal firsttDiscount = this.totalCost.subtract(this.campaignDiscount);
-		BigDecimal hundred = new BigDecimal(100);
-		// cart total price must be grater than coupon price
-		if (firsttDiscount.compareTo(coupon.minPurchaseAmount) == 1) {
-			if (DiscountType.RATE == coupon.discountType) {
-				this.couponDiscount = coupon.discount.multiply(firsttDiscount).divide(hundred);
-			} else {
-				this.couponDiscount = coupon.discount;
-			}
-		}else {
-			   this.couponDiscount = BigDecimal.valueOf(0);
-		}
-	}
 
 	public void print() {
 		List sortedItems = new ArrayList(cartList.keySet());
@@ -175,6 +161,24 @@ public class Cart {
 		System.out.println("Total Discount " + this.couponDiscount.add(this.campaignDiscount));
 		System.out.println("Total Amount " + (this.totalCost.subtract(this.campaignDiscount)).subtract(this.couponDiscount));
 		System.out.println("Delivery Cost " + this.deliveryCost);
+	}
+
+	@Override
+	public void applyDiscount(Discount discount) {
+		Coupon coupon = (Coupon) discount;
+		BigDecimal firsttDiscount = this.totalCost.subtract(this.campaignDiscount);
+		BigDecimal hundred = new BigDecimal(100);
+		// cart total price must be grater than coupon price
+		if (firsttDiscount.compareTo(coupon.minPurchaseAmount) == 1) {
+			if (DiscountType.RATE == coupon.discountType) {
+				this.couponDiscount = coupon.discount.multiply(firsttDiscount).divide(hundred);
+			} else {
+				this.couponDiscount = coupon.discount;
+			}
+		}else {
+			   this.couponDiscount = BigDecimal.valueOf(0);
+		}
+		
 	}
 
 }
