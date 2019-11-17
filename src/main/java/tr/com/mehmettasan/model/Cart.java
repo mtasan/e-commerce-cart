@@ -137,7 +137,8 @@ public class Cart {
 				}
 			}
 		}
-		System.out.println("--------------------------");
+		if(postDiscountCampaignList.size()==0)
+			bestPrice = this.totalCost;
 		this.campaignDiscount = this.totalCost.subtract(bestPrice);
 
 	}
@@ -146,12 +147,14 @@ public class Cart {
 		BigDecimal firsttDiscount = this.totalCost.subtract(this.campaignDiscount);
 		BigDecimal hundred = new BigDecimal(100);
 		// cart total price must be grater than coupon price
-		if (firsttDiscount.compareTo(coupon.discount) == 1) {
+		if (firsttDiscount.compareTo(coupon.minPurchaseAmount) == 1) {
 			if (DiscountType.RATE == coupon.discountType) {
 				this.couponDiscount = coupon.discount.multiply(firsttDiscount).divide(hundred);
 			} else {
 				this.couponDiscount = coupon.discount;
 			}
+		}else {
+			   this.couponDiscount = BigDecimal.valueOf(0);
 		}
 	}
 

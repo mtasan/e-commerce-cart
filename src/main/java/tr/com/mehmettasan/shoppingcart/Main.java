@@ -13,10 +13,9 @@ import tr.com.mehmettasan.model.Coupon;
 import tr.com.mehmettasan.model.DiscountType;
 import tr.com.mehmettasan.model.Product;
 
-public class Test {  
+public class Main {  
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		Category foodCategory = new Category("food");
 		Category electronicCategory = new Category("electronic");
 
@@ -33,12 +32,9 @@ public class Test {
 		cart.addItem(laptop, 5);
 		cart.addItem(tablet, 2);
 		
-		HashMap chartList = cart.getCartList();
+		//HashMap chartList = cart.getCartList();
 		
-		/*
-		chartList.forEach((k,v)->System.out.println("Item : " + ((Product) k).getTitle() +
-													"Price : " + ((Product) k).getPrice() + " Count : " + v));
-		*/
+
 		DiscountType discountType = DiscountType.AMOUNT;
 		List<Campaign> campaignList = new ArrayList();
 		
@@ -57,13 +53,7 @@ public class Test {
 		DeliveryCostCalculator deliveryCC = new DeliveryCostCalculator(new BigDecimal(13),new BigDecimal(3),new BigDecimal("2.99"));
 		cart.setDeliveryCost(deliveryCC.calculateCost(cart));
 		
-		/*
-		System.out.println("Total Chart " +cart.getTotalCost());
-		System.out.println("Campaign Discount " +cart.getCampaignDiscount());
-		System.out.println("Coupon Discount " +cart.getCouponDiscount());
-		System.out.println("Delivery Cost " +deliveryCC.calculateCost(cart));
-		*/
-		
+
 		cart.print();
 
 	}
